@@ -2,13 +2,53 @@
 @tag "documentation"
 editor MakeRugLanguageExtension
 
-@displayName "My Value"
-@description "a single parameter to this editor"
-@validInput "free text"
-param my_value: @any
+@description "package to put the new classes in"
+@validInput "java package, like com.atomist.rug"
+param package: @java_package
 
-let fileContents = "Hello, world!"
+@description "Name of the new Rug language extension"
+@validInput "valid Java class name, like MagnificentLanguageOfExcellence"
+param type_name: @java_class
 
-/* Example showing adding one file */
-with Project p
-  do addFile "hello.txt" fileContents
+let new_source_filename={ type_name + "Type.scala" }
+let new_test_filename={ type_name + "TypeTest.scala" }
+
+MoveScalaFile existing_file="src/main/scala/samplepackage/SampleType.scala", new_filename=new_source_filename
+MoveScalaFile existing_file="src/test/scala/samplepackage/SampleTypeTest.scala", new_filename=new_test_filename
+
+with Project p begin
+  with Pom
+    do addOrReplaceDependency group_id="com.atomist" artifact_id="rug" version="0.12.0"
+  with File when name = new_source_filename
+    do replace "Sample" type_name
+  with File when name = new_test_filename
+    do replace "Sample" type_name
+  do addFile "src/main/resources/com.atomist.rug.spi.Typed" { package + "." + type_name + "Type "}
+end
+
+
+
+editor MoveScalaFile
+
+param existing_file: @any
+
+param package: @java_package
+
+param new_filename: @any
+
+let new_filepath = {
+  if (existing_file.startsWith("src/main/scala"))
+    return "src/main/scala/" + package.replaceAll("\\.","/") + "/" + new_filename;
+  else
+    return "src/test/scala/" + package.replaceAll("\\.","/") + "/" + new_filename;
+ }
+
+with Project p begin
+  do eval { print("MOVING " + existing_file + " to " + new_filepath)}
+  do copyEditorBackingFileOrFail existing_file new_filepath
+  do deleteFile existing_file
+  with File when path = new_filepath begin
+    do eval { print("changing package to " + package) }
+    do regexpReplace "package .*" { "package " + package }
+  end
+end

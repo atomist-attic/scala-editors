@@ -11,7 +11,7 @@ import {Match} from '@atomist/rug/tree/PathExpression'
 class UpgradeScalaTestAssertions implements ProjectEditor {
     name: string = "UpgradeScalaTestAssertions"
     description: string = "Upgrades ScalaTest assertions"
-
+ 
     edit(project: Project) {
       let eng: PathExpressionEngine = project.context().pathExpressionEngine()
 

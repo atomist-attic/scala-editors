@@ -13,3 +13,19 @@ editor:
   parameters:
     - "editor_name": "MakeRugLanguageExtension"
 
+---
+kind: "operation"
+client: "rug-cli 0.23.0"
+editor:
+  name: "jessitron.scattered-rugs.AddScalaPom"
+  group: "jessitron"
+  artifact: "scattered-rugs"
+  version: "0.2.0"
+  origin:
+    repo: "git@github.com:jessitron/scattered-rugs.git"
+    branch: "master"
+    sha: "08b0c19*"
+  parameters:
+    - "group_id": "something"
+    - "artifact_id": "scala-editors"
+

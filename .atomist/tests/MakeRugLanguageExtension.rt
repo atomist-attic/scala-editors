@@ -1,6 +1,4 @@
-scenario MakeRugLanguageExtension should do something amazing for developers
-
-import atomist-rugs.scala-project.NewScalaProject
+scenario MakeRugLanguageExtension should create the files needed for a Rug language extension
 
 let elm_type_file = "src/main/scala/com/jessitron/rug/kind/elm/ElmType.scala"
 let typed_file = "src/main/resources/com.atomist.rug.spi.Typed"
@@ -8,10 +6,25 @@ let test_file = "src/test/scala/com/jessitron/rug/kind/elm/ElmTypeTest.scala"
 
 
 given
-  NewScalaProject project_name="whatever" group_id="hugs" package="com.jessitron.rug.kind.elm"
+  pom.xml = """<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>something</groupId>
+    <artifactId>else</artifactId>
+    <version>0.13.0</version>
+  <dependencies>
+        <dependency>
+            <groupId>com.atomist</groupId>
+            <artifactId>artifact-source</artifactId>
+            <version>0.14.4</version>
+        </dependency>
+      </dependencies>
+      </project>"""
+
 
 when
-  MakeRugLanguageExtension type_name="Elm" package="com.jessitron.rug.kind.elm"
+  MakeRugLanguageExtension type_name="Elm", package="com.jessitron.rug.kind.elm"
 
 then
   fileContains "pom.xml" "artifactId>rug<"
