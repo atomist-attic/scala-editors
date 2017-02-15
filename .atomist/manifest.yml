@@ -2,3 +2,5 @@ group: atomist-rugs
 artifact: scala-editors
 version: "0.1.0"
 requires: "0.12.0"
+dependencies:
+  - "atomist-rugs:scala-project:0.1.0"

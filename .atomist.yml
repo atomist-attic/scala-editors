@@ -1,0 +1,15 @@
+---
+kind: "operation"
+client: "rug-cli 0.23.0"
+editor:
+  name: "atomist-rugs.rug-editors.AddRugEditor"
+  group: "atomist-rugs"
+  artifact: "rug-editors"
+  version: "0.8.0"
+  origin:
+    repo: "https://github.com/atomist-rugs/rug-editors.git"
+    branch: "b29e16a2eb08430790d6ef7d72ab2c199786d7c0"
+    sha: "b29e16a"
+  parameters:
+    - "editor_name": "MakeRugLanguageExtension"
+

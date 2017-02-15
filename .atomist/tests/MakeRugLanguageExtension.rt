@@ -1,0 +1,25 @@
+scenario MakeRugLanguageExtension should do something amazing for developers
+
+import atomist-rugs.scala-project.NewScalaProject
+
+let elm_type_file = "src/main/scala/com/jessitron/rug/kind/elm/ElmType.scala"
+let typed_file = "src/main/resources/com.atomist.rug.spi.Typed"
+let test_file = "src/test/scala/com/jessitron/rug/kind/elm/ElmTypeTest.scala"
+
+
+given
+  NewScalaProject project_name="whatever" group_id="hugs" package="com.jessitron.rug.kind.elm"
+
+when
+  MakeRugLanguageExtension type_name="Elm" package="com.jessitron.rug.kind.elm"
+
+then
+  fileContains "pom.xml" "artifactId>rug<"
+  and fileExists elm_type_file
+    and fileContains elm_type_file "class ElmType"
+    and fileContains elm_type_file "package com.jessitron.rug.kind.elm"
+  and fileExists typed_file
+    and fileContains typed_file "com.jessitron.rug.kind.elm.ElmType"
+  and fileExists test_file
+    and fileContains test_file "class ElmTypeTest"
+    and fileContains test_file "package com.jessitron.rug.kind.elm"
