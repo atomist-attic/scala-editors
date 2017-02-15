@@ -12,16 +12,10 @@ class WrapFunctionBody implements ProjectEditor {
       let eng: PathExpressionEngine = project.context().pathExpressionEngine()
 
       /*
-      We're matching a structure like this:
-
-      TermApplyInfix:[MutableContainer]
-              TermSelect:[MutableContainer]
-                TermName:[scenarios]
-                TermName:[size]
-              TermName:[should]
-              TermApply:[MutableContainer]
-                TermName:[be]
-                Lit:[2]
+      I'm looking for functions that return Parser[SyntaxNode]
+      I expect them to have an infix application as the function body
+      Change their type to Parser[PositionedSyntaxNode]
+      and wrap their body in a call to positionedNode()
       */
       let targets = `//File()[@name="ElmParser.scala"]/ScalaFile()//defnDef[/typeApply[@value="Parser[SyntaxNode]"]]`
 

@@ -1,0 +1,21 @@
+{
+  "group" : "atomist-rugs",
+  "artifact" : "scala-editors",
+  "version" : "0.1.0",
+  "origin" : {
+    "repo" : "git@github.com:atomist-rugs/scala-editors",
+    "branch" : "master",
+    "sha" : "0586863*"
+  },
+  "editors" : [ {
+    "name" : "UpgradeScalaTestAssertions",
+    "description" : "Upgrades ScalaTest assertions"
+  }, {
+    "name" : "WrapFunctionBody",
+    "description" : "just put positionedStructure() around my parsers"
+  } ],
+  "executors" : [ {
+    "name" : "UpgradeScalaTestAssertions",
+    "description" : "Upgrades ScalaTest assertions"
+  } ]
+}
