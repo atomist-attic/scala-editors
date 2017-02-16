@@ -23,7 +23,7 @@ with Project p begin
     do replace "Sample" type_name
   with File when name = new_test_filename
     do replace "Sample" type_name
-  do addFile "src/main/resources/com.atomist.rug.spi.Typed" { package + "." + type_name + "Type "}
+  do addFile "src/main/resources/META-INF/services/com.atomist.rug.spi.Typed" { package + "." + type_name + "Type "}
 end
 
 
