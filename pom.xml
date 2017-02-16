@@ -4,7 +4,7 @@
 
     <groupId>something</groupId>
     <artifactId>scala-editors</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <dependencies>
         <dependency>
@@ -16,6 +16,16 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>2.11.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atomist</groupId>
+            <artifactId>rug</artifactId>
+            <version>0.13.0-SNAPSHOT</version>
+        </dependency>
+    	<dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.11</artifactId>
+            <version>3.0.1</version>
         </dependency>
     </dependencies>
 
@@ -54,6 +64,32 @@
                     </args>
                 </configuration>
             </plugin>
+        	<plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <junitxml>.</junitxml>
+                    <filereports>WhatIsThisTestSuite.txt</filereports>
+                </configuration>
+                <executions>
+                    <execution>
+                       <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        	<plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+           </plugin>
         </plugins>
     </build>
 

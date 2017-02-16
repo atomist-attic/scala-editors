@@ -5,9 +5,9 @@ import org.scalatest.FlatSpec
 
 class SampleTypeTest extends FlatSpec with RugLanguageExtensionTest {
 
-  val sourceProjectLocation = ???
 
   it should "change my source code" in {
+    val sourceProjectLocation = ???
 
     val pmv = projectFromDirectory(sourceProjectLocation)
 

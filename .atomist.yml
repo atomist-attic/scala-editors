@@ -44,3 +44,16 @@ editor:
   parameters:
     - "editor_name": "BringInTreeNodePrinter"
 
+---
+kind: "operation"
+client: "rug-cli 0.23.1-SNAPSHOT"
+editor:
+  name: "jessitron.scattered-rugs.BringInScalatest"
+  group: "jessitron"
+  artifact: "scattered-rugs"
+  version: "0.2.0"
+  origin:
+    repo: "git@github.com:jessitron/scattered-rugs.git"
+    branch: "master"
+    sha: "08b0c19*"
+
