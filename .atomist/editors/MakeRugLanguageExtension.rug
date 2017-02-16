@@ -43,11 +43,12 @@ let new_filepath = {
     return "src/test/scala/" + package.replaceAll("\\.","/") + "/" + new_filename;
  }
 
+# TODO: skip if existing == new
 with Project p begin
   do eval { print("MOVING " + existing_file + " to " + new_filepath)}
   do copyEditorBackingFileOrFail existing_file new_filepath
   do deleteFile existing_file
-  with File when path = new_filepath begin
+  with File when path = new_filepath and begin
     do eval { print("changing package to " + package) }
     do regexpReplace "package .*" { "package " + package }
   end
