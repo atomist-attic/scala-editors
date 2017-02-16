@@ -18,7 +18,7 @@ MoveScalaFile existing_file="src/test/scala/samplepackage/SampleTypeTest.scala",
 
 with Project p begin
   with Pom
-    do addOrReplaceDependency group_id="com.atomist" artifact_id="rug" version="0.12.0"
+    do addOrReplaceDependencyOfVersion group_id="com.atomist" artifact_id="rug" version="0.13.0-SNAPSHOT"
   with File when name = new_source_filename
     do replace "Sample" type_name
   with File when name = new_test_filename
