@@ -1,7 +1,7 @@
 scenario MakeRugLanguageExtension should create the files needed for a Rug language extension
 
 let elm_type_file = "src/main/scala/com/jessitron/rug/kind/elm/ElmType.scala"
-let typed_file = "src/main/resources/com.atomist.rug.spi.Typed"
+let typed_file = "src/main/resources/META-INF/services/com.atomist.rug.spi.Typed"
 let test_file = "src/test/scala/com/jessitron/rug/kind/elm/ElmTypeTest.scala"
 
 

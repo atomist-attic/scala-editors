@@ -1,5 +1,6 @@
-@description "This rug is copied into your project by AddRugEditor"
-@tag "documentation"
+@description "Make a Scala project into a Rug language extension"
+@tag "scala"
+@tag "rug"
 editor MakeRugLanguageExtension
 
 @description "package to put the new classes in"
